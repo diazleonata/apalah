@@ -1,79 +1,65 @@
-/* Reset margin dan padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* Styling body */
 body {
-    font-family: 'Cursive', sans-serif;
     background-color: #f3f4f6;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
 }
 
-/* Container untuk teks dan dekorasi */
-.container {
-    text-align: center;
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+/* Style untuk bunga */
+.flower {
     position: relative;
+    width: 200px;
+    height: 200px;
 }
 
-/* Style untuk teks utama */
-h1 {
-    font-size: 3em;
-    color: #e91e63;
-    font-family: 'Pacifico', cursive;
-    animation: fadeIn 3s ease-in-out;
-}
-
-/* Dekorasi bulat dan segitiga */
-.decoration {
+/* Style untuk kelopak bunga */
+.petal {
     position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-}
-
-.circle {
-    width: 150px;
-    height: 150px;
-    background-color: #ff5722;
+    width: 100px;
+    height: 100px;
+    background-color: #ff4081;
     border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    opacity: 0.7;
+    opacity: 0;
+    transform-origin: 50% 100%;
+    animation: bloom 3s ease-in-out infinite;
 }
 
-.triangle {
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 150px solid #03a9f4;
+/* Atur posisi kelopak di sekitar pusat */
+.petal1 { transform: rotate(0deg);    top: 0; left: 50%; transform-origin: bottom center; }
+.petal2 { transform: rotate(60deg);   top: 20%; right: 0; transform-origin: bottom left; }
+.petal3 { transform: rotate(120deg);  top: 60%; right: 0; transform-origin: bottom left; }
+.petal4 { transform: rotate(180deg);  bottom: 0; left: 50%; transform-origin: top center; }
+.petal5 { transform: rotate(240deg);  top: 60%; left: 0; transform-origin: bottom right; }
+.petal6 { transform: rotate(300deg);  top: 20%; left: 0; transform-origin: bottom right; }
+
+/* Style untuk pusat bunga */
+.center {
     position: absolute;
-    bottom: -50px;
-    left: -50px;
-    opacity: 0.7;
+    width: 60px;
+    height: 60px;
+    background-color: #fdd835;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
-/* Animasi fadeIn untuk teks */
-@keyframes fadeIn {
-    from {
+/* Animasi mekar */
+@keyframes bloom {
+    0% {
         opacity: 0;
-        transform: scale(0.8);
+        transform: scale(0) rotate(0deg);
     }
-    to {
+    50% {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
     }
 }
